@@ -29,6 +29,18 @@ define([
       body: buf
     };
   });
+  var webapp_manifest = null;
+  fs.readFile(path.dirname(filename) + '/static/manifest.webapp', function(err,buf) {
+    if(err)
+      throw(err);
+    webapp_manifest = {
+      headers:{
+        'Content-Type'  : 'application/x-web-app-manifest+json',
+        'Content-Length': buf.length,
+      },
+      body: buf
+    };
+  });
 
   return {
     initialize: function() {
@@ -50,6 +62,10 @@ define([
         app.get("/" + manifestFilename, function(req, res){
           res.writeHead(200,manifest.headers);
           res.end(manifest.body);
+        });
+        app.get("/manifest.webapp", function(req, res){
+          res.writeHead(200,webapp_manifest.headers);
+          res.end(webapp_manifest.body);
         });
         var staticDir = path.dirname(filename) + '/static';
         console.log('initializing static: ' + staticDir);

@@ -11,9 +11,26 @@ define([
       'click #secondary-nav > li > a' : 'changeActive'
     },
 
+    installCallback: function(result) {
+        // alert("<3");
+    },
+
+    errorCallback: function(result) {
+        // alert("WHY U NO INSTALL?!" + result.code + " " + result.message);
+    },
+
     initialize: function() {
       _.bindAll(this, 'render', 'changeActive', 'setActiveElement');
       this.template = _.template(topNavTemplate);
+
+//      if (config.mdn_mode) {
+          navigator.mozApps.install(
+            "/manifest.webapp",
+            {},
+            this.installCallback,
+            this.errorCallback
+          );
+//      }
     },
 
     changeActive: function(evt) {

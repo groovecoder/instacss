@@ -1,0 +1,14 @@
+{
+  "version": "1.0",
+  "name": "MDN dochub",
+  "description": "MDN doc app, powered by dochub.io",
+  "icons": {
+    "16": "/images/mdn-icon-16.png",
+    "48": "/images/mdn-icon-48.png",
+    "128": "/images/mdn-icon-128.png"
+  },
+  "developer": {
+    "name": "Rafael Garcia",
+    "url": "https://github.com/rgarcia/instacss"
+  }
+}
