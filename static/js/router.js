@@ -6,6 +6,9 @@ define([
   'Underscore',
   'Backbone',
 
+  // Settings
+  'settings',
+
   // Views
   'views/topnav',
   'views/jquerysearchresults',
@@ -26,6 +29,7 @@ define([
   // Templates
   'text!templates/mdnpage.html',
 ], function(doc, $, _, Backbone,
+            Settings,
             TopNavView, JQuerySearchResultsView, LanguageView, PageScrapedLanguageView,
             FullWindowView,
             MozDevCSSPropCollection, MDNHtmlElementsCollection, MDNJsObjsCollection,
@@ -108,7 +112,8 @@ define([
       var self = this;
       this.renderTopNav = _.once(function() {
         self.topNavView = new TopNavView({
-          el: $('#topbar-inner')
+          el: $('#topbar-inner'),
+          settings: Settings
         });
         self.topNavView.render();
         self.topNavView.bind('changeLanguage', self.changeLanguage);
