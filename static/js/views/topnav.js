@@ -59,7 +59,7 @@ define([
     },
 
     render: function() {
-      $(this.el).html(this.template({}));
+      $(this.el).html(this.template({ settings: this.options.settings }));
       return this;
     },
   });
